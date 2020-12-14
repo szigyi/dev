@@ -9,10 +9,23 @@
 ## Services
 Using influx to store raspberry pi basic metrics. Those metrics get into the DB by the 'tools/system_monitoring_to_influx.py' service.
 
+## Commands
+   * START:  `systemctl start external-temperature-monitoring.service`
+   * STOP:   `systemctl stop external-temperature-monitoring.service`
+   * Status: `systemctl status external-temperature-monitoring.service`
+   * Log:    `journalctl -u system-monitoring.service`
+
 ## Install services
 Create a symlink in `/etc/systemd/system` that points to the dev folder's service files. Like so:
    * `cd /etc/systemd/system && sudo ln -s /home/pi/dev/tools/external-temperature-monitoring.service external-temperature-monitoring.service`
    * `system-monitoring.service -> /home/pi/dev/tools/system-monitoring.service`
+
+Install dependencies:
+   * `pip3 install influxdb`
+
+Start your service (Remember that you have to run it first manually to provide the password):
+   * `systemctl start external-temperature-monitoring.service`
+
 
 ### Documentation
 ## Thermometer
