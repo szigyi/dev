@@ -33,7 +33,7 @@ def measure():
             "measurement": measurement_name,
             "time": time,
             "fields": {
-                "external_temp": temp,
+                "external_temp": float(temp),
             }
         }
     ]
