@@ -22,6 +22,7 @@ Create a symlink in `/etc/systemd/system` that points to the dev folder's servic
 
 Install dependencies:
    * `pip3 install influxdb`
+   * `pip3 install psutil`
 
 Start your service (Remember that you have to run it first manually to provide the password):
    * `systemctl start external-temperature-monitoring.service`
