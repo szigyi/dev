@@ -7,7 +7,12 @@
 `sudo raspi-config`
 
 ## Services
-Using influx to store raspberry pi basic metrics. Those metrics get into the DB by the 'tools/system_monitoring_to_influx.py' service. 
+Using influx to store raspberry pi basic metrics. Those metrics get into the DB by the 'tools/system_monitoring_to_influx.py' service.
+
+## Install services
+Create a symlink in `/etc/systemd/system` that points to the dev folder's service files. Like so:
+   * `cd /etc/systemd/system && sudo ln -s /home/pi/dev/tools/external-temperature-monitoring.service external-temperature-monitoring.service`
+   * `system-monitoring.service -> /home/pi/dev/tools/system-monitoring.service`
 
 ### Documentation
 ## Thermometer
