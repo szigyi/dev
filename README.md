@@ -6,6 +6,10 @@
 ## Shutdown the pi
 `sudo shutdown now`
 
+## Use pi aliases
+Symlink the .bash_aliases file to your home folder, like wise:
+   * `cd ~ &&  sudo ln -s /home/pi/dev/.bash_aliases .bash_aliases`
+
 ## Services
 Using influx to store raspberry pi basic metrics. Those metrics get into the DB by the 'tools/system_monitoring_to_influx.py' service.
 
