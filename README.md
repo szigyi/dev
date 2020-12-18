@@ -9,6 +9,9 @@
 ## Use pi aliases
 Symlink the .bash_aliases file to your home folder, like wise:
    * `cd ~ &&  sudo ln -s /home/pi/dev/.bash_aliases .bash_aliases`
+And then invoke the functions from `.bashrc` or other profile file.
+   * `pi_welcome`
+   * `pi_cmds`
 
 ## Services
 Using influx to store raspberry pi basic metrics. Those metrics get into the DB by the 'tools/system_monitoring_to_influx.py' service.
