@@ -17,23 +17,34 @@ And then invoke the functions from `.bashrc` or other profile file.
 Using influx to store raspberry pi basic metrics. Those metrics get into the DB by the 'tools/system_monitoring_to_influx.py' service.
 
 ## Commands
-   * START:  `systemctl start external-temperature-monitoring.service`
-   * STOP:   `systemctl stop external-temperature-monitoring.service`
-   * Status: `systemctl status external-temperature-monitoring.service`
-   * Log:    `journalctl -u system-monitoring.service`
+   * START
+      * `systemctl start system-monitoring.service`
+      * `systemctl start external-temperature-monitoring.service`
+   * STOP
+      * `systemctl stop system-monitoring.service`
+      * `systemctl stop external-temperature-monitoring.service`
+   * Status
+      * `systemctl status system-monitoring.service`
+      * `systemctl status external-temperature-monitoring.service`
+   * Log
+      * `journalctl -u system-monitoring.service`
+      * `journalctl -u external-temperature-monitoring.service`
 
 ## Install services
 Create a symlink in `/etc/systemd/system` that points to the dev folder's service files. Like so:
    * `cd /etc/systemd/system && sudo ln -s /home/pi/dev/tools/external-temperature-monitoring.service external-temperature-monitoring.service`
-   * `system-monitoring.service -> /home/pi/dev/tools/system-monitoring.service`
-
+   * You should see: `system-monitoring.service -> /home/pi/dev/tools/system-monitoring.service`
 Install dependencies:
    * `pip install influxdb`
    * `pip install psutil`
-   * https://github.com/simonmonk/pi_analog
-
-Start your service (Remember that you have to run it first manually to provide the password):
-   * `systemctl start external-temperature-monitoring.service`
+   * Install https://github.com/simonmonk/pi_analog
+      * `$ git clone https://github.com/simonmonk/pi_analog.git`
+      * `cd pi_analog`
+      * `sudo python3 setup.py install`
+And then start it
+   * `systemctl start system-monitoring.service`
+Eventually, enable it so it will be started after system has booted
+   * `systemctl enable system-monitoring.service`
 
 
 ### Documentation

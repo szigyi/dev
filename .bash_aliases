@@ -46,7 +46,7 @@ pi_welcome () {
 	  (  : '~' :  )   CPU Temperature....: `/opt/vc/bin/vcgencmd measure_temp | cut -c 6-9 | awk '{ print $1 "°C" }'`
 	   '~ .~~~. ~'    Free Disk Space....: `df -Ph | grep -E '^/dev/root' | awk '{ print $4 " of " $2 }'`
 	       '~'  	  IP Addresses.......: `/sbin/ifconfig eth0 | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1` and `wget -q -O - http://icanhazip.com/ | tail`
-	          	  	  Weather............: `curl -s "http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=EUR|PL|PL007|WARSZAWA|" | sed -n '/Currently:/ s/.*: \(.*\): \([0-9]*\)\([CF]\).*/\2°\3, \1/p'`
+	          	  Weather............: `curl -s "http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=EUR|PL|PL007|WARSZAWA|" | sed -n '/Currently:/ s/.*: \(.*\): \([0-9]*\)\([CF]\).*/\2°\3, \1/p'`
 	$(tput sgr0)"
 }
 
