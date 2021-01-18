@@ -1,5 +1,5 @@
 # pi tips
-
+ 
 ## Connect to pi via ssh on localhost
 `ssh pi@192.168.1.104`
 
