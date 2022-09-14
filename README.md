@@ -1,5 +1,9 @@
 # pi tips
  
+## Discover devices on local network
+   * `ifconfig | grep broadcast`
+   * `arp -a`
+
 ## Connect to pi via ssh on localhost
 `ssh pi@192.168.1.104`
 
