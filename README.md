@@ -17,6 +17,9 @@ And then invoke the functions from `.bashrc` or other profile file.
    * `pi_welcome`
    * `pi_cmds`
 
+## Auto-Hotspot
+https://github.com/RaspberryConnect/AutoHotspot-Installer
+
 ## Services
 Using influx to store raspberry pi basic metrics. Those metrics get into the DB by the 'tools/system_monitoring_to_influx.py' service.
 
