@@ -2,7 +2,7 @@ from sense_hat import SenseHat
 from time import sleep
 from Graph import Graph
 import GraphUtil
-
+from State import StateManager, State
 
 sense = SenseHat()
 
@@ -37,15 +37,18 @@ def graph():
     temp = sense.get_temperature()
     pixels = g.render(temp)
     sense.set_pixels(pixels)
+    sleep(4)
+
+
+temperature_state = State(temperature)
+humidity_state = State(humidity)
+graph_state = State(graph)
+state_manager = StateManager([graph_state, temperature_state, humidity_state])
 
 
 try:
     while True:
-        graph()
-        sleep(4)
-        temperature()
-        sleep(0.5)
-        humidity()
+        state_manager.next()
 except KeyboardInterrupt:
     sense.show_message("Bye!")
 except Exception as e:
