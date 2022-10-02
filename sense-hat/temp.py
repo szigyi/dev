@@ -7,8 +7,8 @@ import GraphUtil
 sense = SenseHat()
 
 sense.set_rotation(180)
-# sense.low_light = True
-sense.gamma = [1] * 32
+sense.low_light = True
+# sense.gamma = [1] * 32
 sense.clear()
 
 white = (200, 200, 200)
@@ -17,7 +17,7 @@ green = (0, 255, 0)
 blue = (0, 0, 255)
 
 min_temp = 19
-max_temp = 26
+max_temp = 25
 g = Graph(min_temp, max_temp)
 
 
