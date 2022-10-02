@@ -1,6 +1,7 @@
 from sense_hat import SenseHat
 from time import sleep
 from Graph import Graph
+import GraphUtil
 
 
 sense = SenseHat()
@@ -14,14 +15,15 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
 
+min_temp = 14
+max_temp = 30
+g = Graph(min_temp, max_temp)
+
 
 def temperature():
     temp = sense.get_temperature()
-    col = blue
-    if temp >= 24:
-        col = red
-    elif 24 > temp >= 21:
-        col = green
+    scaled_temp = GraphUtil.rescale(min_temp, max_temp, temp) - 1
+    col = GraphUtil.temp_colour(scaled_temp, blue, green, red)
     sense.show_message(str(round(temp, 1)) + "C", 0.1, col)
 
 
@@ -31,7 +33,6 @@ def humidity():
 
 
 def graph():
-    g = Graph(14, 30)
     temp = sense.get_temperature()
     pixels = g.render(temp)
     sense.set_pixels(pixels)

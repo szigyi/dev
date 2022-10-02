@@ -21,21 +21,13 @@ class Graph:
             O, O, O, O, O, O, O, O
             ])
     
-    def __colour(self, row_index):
-        colour = self.B
-        if row_index >= 6:
-            colour = self.R
-        elif row_index >= 2:
-            colour = self.G
-        return colour
-    
     def render(self, current):
         self.matrix = GraphUtil.shift_left_matrix(self.matrix)
         scaled_to_index = round(GraphUtil.rescale(self.min, self.max, current)) - 1
         column = []
         for i in range(7, -1, -1):
             if i <= scaled_to_index:
-                colour = self.__colour(i)
+                colour = GraphUtil.temp_colour(i, self.B, self.G, self.R)
                 dot = colour
             else:
                 dot = self.O
