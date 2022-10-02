@@ -6,11 +6,10 @@ class StateManager:
         self.current = 0
 
     def next(self):
-        if self.current < len(self.states):
-            next_index = self.current
-        else:
-            next_index = 0
-        self.states[next_index].apply()
+        if self.current >= len(self.states):
+            self.current = 0
+        self.states[self.current].apply()
+        self.current = self.current + 1
 
 
 class State:

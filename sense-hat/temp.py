@@ -37,7 +37,7 @@ def graph():
     temp = sense.get_temperature()
     pixels = g.render(temp)
     sense.set_pixels(pixels)
-    sleep(4)
+    sleep(10)
 
 
 temperature_state = State(temperature)
