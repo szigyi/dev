@@ -23,18 +23,18 @@ class Graph:
     
     def __colour(self, row_index):
         colour = self.B
-        if row_index < 2 * 8:
+        if row_index >= 6:
             colour = self.R
-        elif row_index < 6 * 8:
+        elif row_index >= 2:
             colour = self.G
         return colour
     
     def render(self, current):
         self.matrix = GraphUtil.shift_left_matrix(self.matrix)
-        scaled = round(GraphUtil.rescale(self.min, self.max, current))
+        scaled_to_index = round(GraphUtil.rescale(self.min, self.max, current)) - 1
         column = []
-        for i in range(0, 8):
-            if i <= scaled:
+        for i in range(7, -1, -1):
+            if i <= scaled_to_index:
                 colour = self.__colour(i)
                 dot = colour
             else:
@@ -42,10 +42,4 @@ class Graph:
             column.append(dot)
         self.matrix = GraphUtil.set_column(self.matrix, 7, column)
         return GraphUtil.matrix_to_list(self.matrix)
-#         print("scaled:" + str(scaled))
-#         for r in range(56, (7 - scaled) * 8, -8):
-#             colour = self.__colour(r)
-#             self.matrix[r] = colour
-#         return self.matrix
-
 

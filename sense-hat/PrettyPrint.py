@@ -1,3 +1,9 @@
+import GraphUtil
+
+
+def pretty_print_list(name_of_test, list_of_matrix):
+    matrix = GraphUtil.list_to_matrix(list_of_matrix)
+    pretty_print(name_of_test, matrix)
 
 
 def pretty_print(name_of_test, matrix):
