@@ -46,19 +46,22 @@ graph_state = State(graph)
 state_manager = StateManager([graph_state, temperature_state, humidity_state])
 
 
+loop_state = True
 try:
     while True:
-        absent = True
         for event in sense.stick.get_events():
+            print("event", event)
             if event.action == "pressed":
-                absent = False
                 if event.direction == "middle":
-                    absent = True  # reset to the normal screen cycle
+                    loop_state = True  # reset to the normal screen cycle
                 elif event.direction == "right":
+                    loop_state = False
                     state_manager.next()
 
-        if absent:
+        if loop_state:
             state_manager.next()
+        else:
+            state_manager.refresh()
 except KeyboardInterrupt:
     sense.show_message("Bye!")
 except Exception as e:

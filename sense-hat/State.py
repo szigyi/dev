@@ -1,3 +1,5 @@
+from time import sleep
+
 
 class StateManager:
 
@@ -10,6 +12,10 @@ class StateManager:
             self.current = 0
         self.states[self.current].apply()
         self.current = self.current + 1
+    
+    def refresh(self):
+        self.states[self.current].apply()
+        sleep(2)
 
 
 class State:
