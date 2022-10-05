@@ -17,12 +17,15 @@ green = (0, 255, 0)
 blue = (0, 0, 255)
 
 min_temp = 19
-max_temp = 25
+max_temp = 24
 g = Graph(min_temp, max_temp)
+
+def compensated_temperature():
+    return sense.get_temperature() - 1
 
 
 def temperature():
-    temp = sense.get_temperature()
+    temp = compensated_temperature()
     scaled_temp = GraphUtil.rescale(min_temp, max_temp, temp) - 1
     col = GraphUtil.temp_colour(scaled_temp, blue, green, red)
     sense.show_message(str(round(temp, 1)) + "C", 0.1, col)
@@ -34,7 +37,7 @@ def humidity():
 
 
 def graph():
-    temp = sense.get_temperature()
+    temp = compensated_temperature()
     pixels = g.render(temp)
     sense.set_pixels(pixels)
     sleep(10)
