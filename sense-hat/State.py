@@ -8,10 +8,10 @@ class StateManager:
         self.current = 0
 
     def next(self):
-        if self.current >= len(self.states):
+        self.current = self.current + 1
+        if self.current >= len(self.states) - 1:
             self.current = 0
         self.states[self.current].apply()
-        self.current = self.current + 1
     
     def refresh(self):
         self.states[self.current].apply()
