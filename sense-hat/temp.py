@@ -16,7 +16,7 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
 
-min_temp = 19
+min_temp = 20
 max_temp = 24
 g = Graph(min_temp, max_temp)
 
