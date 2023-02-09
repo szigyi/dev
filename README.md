@@ -7,6 +7,10 @@
 ## Connect to pi via ssh on localhost
 `ssh pi@192.168.1.104`
 
+## Enable VNC connection
+`sudo raspi-config`
+* Under the Interface menu
+
 ## Shutdown the pi
 `sudo shutdown now`
 
